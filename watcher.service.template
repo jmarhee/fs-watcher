@@ -1,0 +1,15 @@
+[Unit]
+Description=Directory Watcher Service
+After=network.target
+
+[Service]
+Type=simple
+Environment=WATCH_DIRS=/opt/directory1,/opt/directory2
+Environment=FILE_CHMOD=0644
+Environment=FILE_OWNER=998
+Environment=FILE_GROUP=998
+ExecStart=/usr/local/bin/watcher
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
